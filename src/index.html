@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Vanilla JavaScript App</title>
+  <script src="index.js"></script>
 </head>
 
 <body>
@@ -15,25 +16,6 @@
     <button type="button" onclick="send();">Send</button>
     <p>Loading content from the API: <b id="message">...</b></p>
   </main>
-  <script>
-    function send() {
-      (async function () {
-        const postData = {
-          name: document.querySelector('#nameInput').value
-        };
-        const response = await fetch(`/api/message`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: JSON.stringify(postData)
-        });
-        const { text } = await response.json();
-        document.querySelector('#message').textContent = text;
-      }());
-    }
-  </script>
 </body>
 
 </html>
