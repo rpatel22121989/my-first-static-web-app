@@ -1,9 +1,11 @@
 function send() {
     (async function () {
+        const name = document.querySelector('#nameInput').value;
         const postData = {
-            name: document.querySelector('#nameInput').value
+            name: name
         };
-        const response = await fetch(`/api/message`, {
+        const response = await fetch(`/api/user/send-message`, { // `/api/message?name=${name}`, /api/user/send-message?name=${name}
+            // method: "GET",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
